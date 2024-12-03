@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Component } from 'react'
 import './App.css'
 
 function App() {
@@ -11,37 +11,45 @@ function App() {
 }
 
 
-const UserInfoForm = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  return (
-    <form onSubmit={(e) => {
-      e.preventDefault()
-      alert(`Hello ${firstName} ${lastName}`)
-      setFirstName('')
-      setLastName('')
-    }}>
-      <div>
-        <label>First Name: </label>
-        <input type="text"
-          value={firstName}
-          onChange={(e) => {
-            setFirstName(e.target.value)
-          }}
-        />
-      </div>
-      <div>
-        <label>Last Name: </label>
-        <input type="text"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value)
-          }}
-        />
-      </div>
-      <input type="submit" />
-    </form>
-  )
+class UserInfoForm extends Component {
+  state = {
+    firstNameInput: "",
+    lastNameInput: ""
+  }
+  render(){
+    const {firstNameInput, lastNameInput} = this.state
+    return (
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        alert(`Hello ${firstNameInput} ${lastNameInput}`)
+        this.setState({
+          firstName: "",
+          lastName: ""
+        })
+      }}>
+        <div>
+          <label>First Name: </label>
+          <input type="text"
+            value={firstNameInput}
+            onChange={(e) => {
+              this.setState({firstNameInput: e.target.value})
+            }}
+          />
+        </div>
+        <div>
+          <label>Last Name: </label>
+          <input type="text"
+            value={lastNameInput}
+            onChange={(e) => {
+              this.setState({lastNameInput: e.target.value})
+            }}
+          />
+        </div>
+        <input type="submit" />
+      </form>
+    )
+  }
+
 }
 
 export default App
