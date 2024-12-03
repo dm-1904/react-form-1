@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+
   return (
     <div className="App">
-      <UserInfoForm/>
+      <UserInfoForm />
     </div>
   )
 }
+
 
 const UserInfoForm = () => {
   const [firstName, setFirstName] = useState("")
@@ -18,7 +20,7 @@ const UserInfoForm = () => {
       alert(`Hello ${firstName} ${lastName}`)
       setFirstName('')
       setLastName('')
-     }}>
+    }}>
       <div>
         <label>First Name: </label>
         <input type="text"
@@ -29,7 +31,7 @@ const UserInfoForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="">Last Name: </label>
+        <label>Last Name: </label>
         <input type="text"
           value={lastName}
           onChange={(e) => {
@@ -38,7 +40,7 @@ const UserInfoForm = () => {
         />
       </div>
       <input type="submit" />
-     </form>
+    </form>
   )
 }
 
