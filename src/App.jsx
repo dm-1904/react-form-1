@@ -1,11 +1,12 @@
-import { Component } from 'react'
+import { Component, useState } from 'react'
 import './App.css'
 
 function App() {
-
+  const [firstName, setFirstName] = useState("")
   return (
     <div className="App">
-      <UserInfoForm />
+      {firstName || "name not set yet"}
+      <UserInfoForm setFirstName={setFirstName}/>
     </div>
   )
 }
@@ -21,7 +22,7 @@ class UserInfoForm extends Component {
     return (
       <form onSubmit={(e) => {
         e.preventDefault()
-        alert(`Hello ${firstNameInput} ${lastNameInput}`)
+        this.props.setFirstName(this.state.firstNameInput)
         this.setState({
           firstName: "",
           lastName: ""
